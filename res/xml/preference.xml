@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:auto="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceScreen
+        android:title="Temperature"
+        android:key="pref_temperature">
+
+        <!-- SwitchPreference
+            android:key="pref_tmpnbl"
+            android:title="Enable meCoffee boiler control"
+            android:summary="Make meCoffee control the boiler"
+            android:enabled="false"
+            android:defaultValue="false" / -->
+
+        <SwitchPreference
+            android:key="pref_tmpcntns"
+            android:title="Continuous mode"
+            android:summary="Instead of using an interval, dim the boiler"
+            android:defaultValue="false" />
+
+
+        <!-- nl.digitalthings.mebarista.PreferencesNumberPicker
+            android:id="@+id/pref_tmpsp"
+            android:key="pref_tmpsp"
+            android:defaultValue="101"
+            android:dialogMessage="Brew temperature ( Celsius )"
+            android:max="150"
+            android:enabled="true"
+            android:title="Brew temperature"
+            android:summary="%d degrees"
+            auto:scale="100"
+            / -->
+
+        <net.jayschwa.android.preference.SliderPreference
+            android:key="pref_tmpsp"
+            android:title="Brew temperature ( Celsius )"
+            android:dialogMessage=""
+            android:summary="%s, default: 101 °"
+            android:defaultValue="10100"
+            android:max="125"
+            auto:minn="50"
+            auto:resolution="0.5"
+            auto:format="%.2f °"
+            auto:scales="100"
+            />
+
+
+        <!-- nl.digitalthings.mebarista.PreferencesNumberPicker
+            android:id="@+id/pref_tmpstm"
+            android:key="pref_tmpstm"
+            android:defaultValue="125"
+            android:dialogMessage="Steam temperature ( Celsius )"
+            android:max="150"
+            android:enabled="true"
+            android:title="Steam temperature"
+            android:summary="%d degrees"
+            auto:scale="100"
+            / -->
+
+        <net.jayschwa.android.preference.SliderPreference
+            android:key="pref_tmpstm"
+            android:title="Steam temperature ( Celsius )"
+            android:dialogMessage=""
+            android:summary="%s, default: 125 °"
+            android:defaultValue="12500"
+            android:max="140"
+            auto:minn="110"
+            auto:resolution="0.5"
+            auto:format="%.2f °"
+            auto:scales="100"
+            />
+
+        <!-- nl.digitalthings.mebarista.PreferencesNumberPicker
+            android:id="@+id/pref_tmppap"
+            android:key="pref_tmppap"
+            android:defaultValue="10"
+            android:dialogMessage="Please select the percentage to increase the boiler power while brewing"
+            android:max="100"
+            android:title="Pro Active Percentage"
+            android:summary="%d %%"
+            /-->
+
+        <net.jayschwa.android.preference.SliderPreference
+            android:key="pref_tmppap"
+            android:title="Pro Active Percentage"
+            android:dialogMessage="Please select the percentage to increase the boiler power while brewing"
+            android:summary="%s, default: 33 %%"
+            android:defaultValue="33"
+            android:max="100"
+            auto:minn="0"
+            auto:resolution="1"
+            auto:format="%.0f %%"
+            auto:scales="1"
+            />
+
+        <PreferenceScreen
+            android:title="PID"
+            android:key="pref_temperature_pid">
+
+            <!-- nl.digitalthings.mebarista.PreferencesNumberPicker
+                android:id="@+id/pref_pd1p"
+                android:key="pref_pd1p"
+                android:defaultValue="10"
+                android:dialogMessage="Please select the Proportional component"
+                android:summary="%d, default: 25"
+                android:max="100"
+                android:title="Proportional component ( P )"
+                / -->
+
+            <net.jayschwa.android.preference.SliderPreference
+                android:key="pref_pd1p"
+                android:title="Proportional component ( P )"
+                android:dialogMessage="Please select the Proportional component"
+                android:summary="%s, default: 20"
+                android:defaultValue="20"
+                android:max="100"
+                auto:minn="0"
+                auto:resolution="1"
+                auto:format="%.0f"
+                auto:scales="1" />
+
+            <!-- nl.digitalthings.mebarista.PreferencesNumberPicker
+                android:id="@+id/pref_pd1i"
+                android:key="pref_pd1i"
+                android:defaultValue="10"
+                android:dialogMessage="Please select the Integral component"
+                android:max="100"
+                android:title="Integral component ( I )"
+                android:summary="%d, default: 3"
+                / -->
+
+            <net.jayschwa.android.preference.SliderPreference
+                android:key="pref_pd1i"
+                android:title="Integral component ( I )"
+                android:dialogMessage="Please select the Integral component"
+                android:summary="%s, default: 0.3"
+                android:defaultValue="0.3"
+                android:max="1"
+                auto:minn="0"
+                auto:resolution="0.01"
+                auto:format="%.2f"
+                auto:scales="100" />
+
+            <!-- nl.digitalthings.mebarista.PreferencesNumberPicker
+                android:id="@+id/pref_pd1d"
+                android:key="pref_pd1d"
+                android:defaultValue="10"
+                android:dialogMessage="Please select the Derivative component"
+                android:max="255"
+                android:title="Derivative component ( D )"
+                android:summary="%d, default:128 "
+                / -->
+
+            <net.jayschwa.android.preference.SliderPreference
+                android:key="pref_pd1d"
+                android:title="Derivative component ( D )"
+                android:dialogMessage="Please select the Derivative component"
+                android:summary="%s, default: 128"
+                android:defaultValue="128"
+                android:max="256"
+                auto:minn="0"
+                auto:resolution="1"
+                auto:format="%.0f"
+                auto:scales="1" />
+
+            <!-- ListPreference
+                android:key="pref_pd1imn"
+                android:title="Integral ( I ) wind-down minimum"
+                android:summary="%s, default: 1000"
+                android:entries="@array/pid_winddown"
+                android:entryValues="@array/pid_winddown_alias"/ -->
+
+            <net.jayschwa.android.preference.SliderPreference
+                android:key="pref_pd1imm"
+                android:title="Integral ( I ) wind-down minimum"
+                android:dialogMessage="The minimum maintenance power, limiting this helps overshoots and oscillation."
+                android:summary="%s, default: 5"
+                android:defaultValue="0"
+                android:max="100"
+                auto:minn="0"
+                auto:format="%.0f %%"
+                auto:resolution="1"
+                auto:scales="655.36"
+                />
+
+
+            <!-- ListPreference
+                android:key="pref_pd1imx"
+                android:title="Integral ( I ) wind-down limit"
+                android:summary="%s, default: 3000"
+                android:entries="@array/pid_winddown"
+                android:entryValues="@array/pid_winddown_alias"/ -->
+
+            <net.jayschwa.android.preference.SliderPreference
+                android:key="pref_pd1imx"
+                android:title="Integral ( I ) wind-down limit"
+                android:dialogMessage="The maximum maintenance power, limiting this helps overshoots and oscillation."
+                android:summary="%s, default: 20"
+                android:defaultValue="20"
+                android:max="100"
+                auto:minn="0"
+                auto:format="%.0f %%"
+                auto:resolution="1"
+                auto:scales="655.36"
+                />
+
+            <!-- ListPreference
+                android:key="pref_pd1sz"
+                android:title="Polling interval"
+                android:summary="%s ms, default: 1000 ms"
+                android:entries="@array/pid_interval"
+                android:entryValues="@array/pid_interval"/ -->
+
+            <net.jayschwa.android.preference.SliderPreference
+                android:key="pref_pd1sz"
+                android:title="Polling interval"
+                android:dialogMessage="Default for continous mode: 1000 ms, \ndefault for interval mode: 5000 ms."
+                android:summary="%s, default: 1000 ms"
+                android:defaultValue="1000"
+                android:max="10000"
+                auto:minn="1000"
+                auto:format="%.0f ms"
+                auto:resolution="500"
+                />
+
+            <!-- nl.digitalthings.mebarista.PreferencesNumberPicker
+                android:id="@+id/pref_pd1id"
+                android:key="pref_pd1id"
+                android:defaultValue="10"
+                android:dialogMessage="Speed at which the error component reacts ( 10 = default, lower is faster, bigger is slow  )"
+                android:max="50"
+                min="1"
+                android:title="I-Speed parameter down"
+                android:summary="%d, default:10 "
+                / -->
+
+
+            <!-- net.jayschwa.android.preference.SliderPreference
+                android:key="pref_pd1id"
+                android:title="Integral speed below setpoint"
+                android:dialogMessage="Lower is faster, higher is slower. Default: 10."
+                android:summary="%s, default: 10"
+                android:defaultValue="10"
+                android:max="50"
+                auto:minn="0"
+                auto:format="%.0f"
+                auto:resolution="1"
+                / -->
+
+            <!-- nl.digitalthings.mebarista.PreferencesNumberPicker
+                android:id="@+id/pref_pd1iu"
+                android:key="pref_pd1iu"
+                android:defaultValue="10"
+                android:dialogMessage="Speed at which the error component reacts ( 10 = default, lower is faster, bigger is slow  )"
+                android:max="50"
+                min="1"
+                android:title="Please select the I-Speed parameter down"
+                android:summary="%d, default:10 "
+                / -->
+
+            <!-- net.jayschwa.android.preference.SliderPreference
+                android:key="pref_pd1iu"
+                android:title="Integral speed above setpoint"
+                android:dialogMessage="Lower is faster, higher is slower. Default: 10."
+                android:summary="%s, default: 10"
+                android:defaultValue="10"
+                android:max="50"
+                auto:minn="0"
+                auto:format="%.0f"
+                auto:resolution="1"
+                / -->
+
+            <Preference android:title="Help" >
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.mecoffee.nl/mebarista/help/temperature/pid"
+                />
+            </Preference>
+
+        </PreferenceScreen>
+
+        <Preference android:title="Help" >
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.mecoffee.nl/mebarista/help/temperature/"
+                />
+
+        </Preference>
+
+    </PreferenceScreen>
+
+    <PreferenceScreen
+        android:title="Pressure"
+        android:key="pref_pp">
+
+        <!-- nl.digitalthings.mebarista.PreferencesNumberPicker
+            android:id="@+id/pref_pp_start"
+            android:key="pref_pp1"
+            android:defaultValue="100"
+            android:dialogMessage="Please select pump pressure to start with"
+            android:max="100"
+            android:title="At start of pull"
+            android:summary="%d %%"
+            android:enabled="true"
+            / -->
+
+        <net.jayschwa.android.preference.SliderPreference
+            android:key="pref_pp1"
+            android:title="At start of pull"
+            android:dialogMessage="Please select pump pressure to start with"
+            android:summary="%s, default: 100 %%"
+            android:defaultValue="100"
+            android:max="100"
+            auto:minn="0"
+            auto:resolution="1"
+            auto:format="%.0f %%"
+            auto:scales="1"
+            />
+
+        <!-- nl.digitalthings.mebarista.PreferencesNumberPicker
+            android:id="@+id/pref_pp_end"
+            android:key="pref_pp2"
+            android:defaultValue="70"
+            android:dialogMessage="Please select pump pressure to end with"
+            android:max="100"
+            android:title="At end of pull"
+            android:summary="%d %%"
+            android:enabled="true"
+
+            / -->
+
+        <net.jayschwa.android.preference.SliderPreference
+            android:key="pref_pp2"
+            android:title="At end of pull"
+            android:dialogMessage="Please select pump pressure to end with"
+            android:summary="%s, default: 100 %%"
+            android:defaultValue="100"
+            android:max="100"
+            auto:minn="0"
+            auto:resolution="1"
+            auto:format="%.0f %%"
+            auto:scales="1"
+            />
+
+
+        <!-- nl.digitalthings.mebarista.PreferencesNumberPicker
+            android:id="@+id/pref_pp_period"
+            android:key="pref_ppt"
+            android:defaultValue="25"
+            android:dialogMessage="Please select the period to taper from the start pressure to the end pressure"
+            android:max="60"
+            android:title="Period"
+            android:enabled="true"
+            android:summary="%d seconds"
+            / -->
+
+        <net.jayschwa.android.preference.SliderPreference
+            android:key="pref_ppt"
+            android:title="Period"
+            android:dialogMessage="Please select the period to taper from the start pressure to the end pressure"
+            android:summary="%s, default: 25 s"
+            android:defaultValue="25"
+            android:max="60"
+            auto:minn="0"
+            auto:resolution="1"
+            auto:format="%.0f s"
+            auto:scales="1"
+            />
+
+
+        <Preference android:title="Help" >
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.mecoffee.nl/mebarista/help/pressure"
+                />
+
+        </Preference>
+
+    </PreferenceScreen>
+
+    <PreferenceScreen
+        android:title="Preinfusion"
+        android:key="pref_pi">
+
+        <!-- nl.digitalthings.mebarista.PreferencesNumberPicker
+            android:id="@+id/pref_pi_shtmx"
+            android:key="pref_shtmx"
+            android:defaultValue="0"
+            android:dialogMessage="Please select total shot time ( 0 for infinity )"
+            android:max="40"
+            android:title="Max shot time"
+            android:summary="%d seconds"
+            / -->
+
+        <net.jayschwa.android.preference.SliderPreference
+            android:key="pref_shtmx"
+            android:title="Max shot time"
+            android:dialogMessage="Please select maximum shot time"
+            android:summary="%s, default: 60 s"
+            android:defaultValue="60"
+            android:max="60"
+            auto:minn="0"
+            auto:resolution="1"
+            auto:format="%.0f s"
+            auto:scales="1"
+            />
+
+        <SwitchPreference
+            android:key="pref_pinbl"
+            android:title="Enable"
+            android:summary="Fill the puck first and pull the shot a couple of seconds later"
+            android:defaultValue="true" />
+
+        <!-- nl.digitalthings.mebarista.PreferencesNumberPicker
+            android:id="@+id/pref_pi_pump"
+            android:dependency="pref_pinbl"
+            android:key="pref_pistrt"
+            android:defaultValue="3"
+            android:dialogMessage="Please select pump time in seconds"
+            android:max="10"
+            android:title="Pump time"
+            android:summary="%d seconds"
+            / -->
+
+        <net.jayschwa.android.preference.SliderPreference
+            android:key="pref_pistrt"
+            android:dependency="pref_pinbl"
+            android:title="Pump time"
+            android:dialogMessage="Please select pump time in seconds"
+            android:summary="%s, default: 3 s"
+            android:defaultValue="3"
+            android:max="10"
+            auto:minn="0"
+            auto:resolution="0.1"
+            auto:format="%.1f s"
+            auto:scales="1000"
+            />
+
+
+        <SwitchPreference
+            android:key="pref_pivlv"
+            android:dependency="pref_pinbl"
+            android:title="Close valve while paused"
+            android:summary=""
+            android:defaultValue="false" />
+
+        <!-- nl.digitalthings.mebarista.PreferencesNumberPicker
+            android:id="@+id/pref_pi_pause"
+            android:dependency="pref_pinbl"
+            android:key="pref_piprd"
+            android:defaultValue="3"
+            android:dialogMessage="Please select pause time in seconds"
+            android:max="10"
+            android:title="Pause time"
+            android:summary="%d seconds"
+            / -->
+
+        <net.jayschwa.android.preference.SliderPreference
+            android:key="pref_piprd"
+            android:dependency="pref_pinbl"
+            android:title="Pause time"
+            android:dialogMessage="Please select pause time in seconds"
+            android:summary="%s, default: 3 s"
+            android:defaultValue="3"
+            android:max="10"
+            auto:minn="0"
+            auto:resolution="0.1"
+            auto:format="%.1f s"
+            auto:scales="1000"
+            />
+
+        <Preference android:title="Help" >
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.mecoffee.nl/mebarista/help/preinfusion/"
+                />
+
+        </Preference>
+
+    </PreferenceScreen>
+
+    <PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:title="Timers"
+        android:key="pref_timer">
+
+        <net.jayschwa.android.preference.SliderPreference
+            android:key="pref_tmrosd"
+            android:title="Auto shutoff time"
+            android:dialogMessage="Inactivity timer. 0 means no disactivity timer"
+            android:summary="%s minutes, default: 60 minutes"
+            android:defaultValue="60"
+            android:max="120"
+            auto:minn="0"
+            auto:resolution="1"
+            auto:format="%.0f minutes"
+            auto:scales="1"
+            />
+
+        <SwitchPreference
+            android:key="pref_tmrwnbl"
+            android:title="Enable"
+            android:summary="Automatically turn machine on at a certain time"
+            android:defaultValue="false" />
+
+        <nl.digitalthings.mebarista.TimePreference
+            android:id="@+id/pref_tmron"
+            android:dependency="pref_tmrwnbl"
+            android:key="pref_tmron"
+            android:dialogMessage="Please select the wakeup time"
+            android:title="Wakeup time"
+            />
+
+        <SwitchPreference
+            android:key="pref_tmrsnbl"
+            android:title="Enable"
+            android:summary="Automatically turn machine off at a certain time"
+            android:enabled="true"
+            android:defaultValue="false" />
+
+        <nl.digitalthings.mebarista.TimePreference
+            android:id="@+id/pref_tmroff"
+            android:dependency="pref_tmrsnbl"
+            android:key="pref_tmroff"
+            android:defaultValue="3"
+            android:dialogMessage="Please select the shutdown time"
+            android:title="Shutdown time"
+            android:summary=" seconds"
+            android:enabled="true"
+            />
+
+        <Preference android:title="Help" >
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.mecoffee.nl/mebarista/help/timer/"
+                />
+
+        </Preference>
+
+    </PreferenceScreen>
+
+    <PreferenceScreen
+        android:title="Bluetooth"
+        android:key="pref_bt">
+
+        <nl.digitalthings.mebarista.EditTextPreferenceWithSummary
+            android:id="@+id/pref_bt_devicename"
+            android:key="pref_btname"
+            android:defaultValue="meCoffee"
+            android:title="Device name"
+            android:summary="Connected device has name '%s'"
+            />
+
+        <nl.digitalthings.mebarista.EditTextPreferenceWithSummary
+            android:id="@+id/pref_bt_devicename_prefix"
+            android:key="pref_bt_devicename_prefix"
+            android:defaultValue="meCoffee"
+            android:title="Device name prefix"
+            android:summary="Devices wich names start with '%s' will be automatically connected"
+            />
+
+        <SwitchPreference
+            android:key="pref_bt_bt2_enabled"
+            android:title="Enable BT2 / Classic"
+            android:summary="Scans for BT2 / Classic devices"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="pref_bt_ble_enabled"
+            android:title="Enable BLE / Bluetooth Low Energy"
+            android:summary="Scans for BLE / Bluetooth Low Energy devices"
+            android:defaultValue="false" />
+
+        <SwitchPreference
+            android:key="pref_bt_disable"
+            android:title="Disable on close"
+            android:summary="Disable Bluetooth adapter if App is closed"
+            android:defaultValue="false" />
+
+
+        <SwitchPreference
+            android:key="pref_bt_keepdiscovering"
+            android:title="Keep discovering"
+            android:summary="Keep discovering devices when not connected"
+            android:enabled="true"
+            android:defaultValue="false" />
+
+        <!-- nl.digitalthings.mebarista.PreferencesNumberPicker
+            android:id="@+id/pref_bt_scanlimit_minutes"
+            android:dependency="pref_bt_scanlimit"
+            android:key="pref_pt_scanlimit_minutes"
+            android:defaultValue="3"
+            android:dialogMessage="Please select scan time in minutues"
+            android:max="10"
+            android:title="Bluetooth scan time"
+            android:enabled="false"
+            android:summary=" minutes"
+            / -->
+
+        <Preference android:title="Help" >
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.mecoffee.nl/mebarista/help/bluetooth/"
+                />
+
+        </Preference>
+
+    </PreferenceScreen>
+
+    <PreferenceScreen
+        android:title="User interface"
+        android:key="pref_ui">
+
+        <SwitchPreference
+            android:key="pref_ui_graph_enable"
+            android:title="Enable graph"
+            android:summary="Show the temperature graph on the background"
+            android:defaultValue="true" />
+
+        <ListPreference
+            android:key="pref_ui_graph_history"
+            android:title="Graph history"
+            android:dependency="pref_ui_graph_enable"
+            android:entries="@array/graph_history"
+            android:entryValues="@array/graph_history_alias"/>
+
+        <SwitchPreference
+            android:id="@+id/pref_ui_second_sensor"
+            android:key="pref_ui_second_sensor"
+            android:title="Show second sensor"
+            android:summary=""
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
+            android:key="pref_ui_tempcontrol_enable"
+            android:title="Enable temperature control"
+            android:defaultValue="false" />
+
+        <SwitchPreference
+            android:id="@+id/pref_ui_background"
+            android:key="pref_ui_background"
+            android:title="Show background"
+            android:summary=""
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:id="@+id/pref_ui_logging"
+            android:key="pref_ui_logging"
+            android:title="Show logging"
+            android:summary=""
+            android:defaultValue="false" />
+
+        <SwitchPreference
+            android:id="@+id/pref_ui_screenwake"
+            android:key="pref_ui_screenwake"
+            android:title="Prevent screen sleep"
+            android:summary=""
+            android:defaultValue="false" />
+
+        <Preference android:title="Help" >
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.mecoffee.nl/mebarista/help/userinterface/"
+                />
+
+        </Preference>
+
+    </PreferenceScreen>
+
+    <!-- PreferenceScreen
+        android:title="Statistics"
+        android:key="pref_statistics">
+
+        <nl.digitalthings.mebarista.PreferencesNumberPicker
+            android:id="@+id/pref_grndr_cnt"
+            android:key="pref_grndr_cnt"
+            android:defaultValue="0"
+            android:dialogMessage="The times the grinder has grinded!"
+            android:enabled="false"
+            android:selectable="false"
+            android:shouldDisableView="false"
+            android:title="Grinder counter"
+            android:summary=" times"
+            android:max="65000"
+            />
+
+        <Preference android:title="Help" >
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.mecoffee.nl/mebarista/help/statistics"
+                />
+
+        </Preference>
+
+    </PreferenceScreen !-->
+
+    <PreferenceScreen
+        android:title="Hardware"
+        android:key="pref_hardware">
+
+        <ListPreference
+            android:id="@+id/pref_hw_out0"
+            android:key="pref_o0"
+            android:title="Output 1"
+            android:summary="%s, default: Pump"
+            android:defaultValue="112"
+            android:entries="@array/hw_out"
+            android:entryValues="@array/hw_out_alias"/>
+
+        <ListPreference
+            android:id="@+id/pref_support_hw_out1"
+            android:key="pref_o1"
+            android:title="Output 2"
+            android:summary="%s, default: Boiler"
+            android:defaultValue="98"
+            android:entries="@array/hw_out"
+            android:entryValues="@array/hw_out_alias"/>
+
+        <ListPreference
+            android:id="@+id/pref_hw_out2"
+            android:key="pref_o2"
+            android:title="Output 3"
+            android:summary="%s, default: Valve"
+            android:defaultValue="118"
+            android:entries="@array/hw_out"
+            android:entryValues="@array/hw_out_alias"/>
+
+        <SwitchPreference
+            android:key="pref_tmrpwr"
+            android:title="Installed as timer"
+            android:summary="Prevent warmup after power outage or cold boot"
+            android:enabled="true"
+            android:defaultValue="false" />
+
+        <SwitchPreference
+            android:key="pref_pwrflp"
+            android:title="Power button flips back"
+            android:summary="Enable Silvia V5 power button or similar"
+            android:enabled="true"
+            android:defaultValue="false" />
+
+        <!-- SwitchPreference
+            android:key="pref_s1ad"
+            android:title="Sensor 1 divide"
+            android:summary="Do the sensor dance"
+            android:enabled="true"
+            android:defaultValue="false" / -->
+
+        <PreferenceScreen
+            android:title="Firmware"
+            android:key="pref_firmware">
+
+            <nl.digitalthings.mebarista.EditTextPreferenceWithSummary
+                android:id="@+id/pref_uname"
+                android:key="pref_uname"
+                android:defaultValue=""
+                android:title="Device firmware"
+                android:summary="Running version: %s"
+                />
+
+            <nl.digitalthings.mebarista.EditTextPreferenceWithSummary
+                android:id="@+id/pref_fw_pin"
+                android:key="pref_fw_pin"
+                android:defaultValue=""
+                android:title="Pin code required for flashing"
+                android:summary="'%s'"
+                />
+
+            <SwitchPreference
+                android:id="@+id/pref_support_fw_enable"
+                android:key="pref_support_fw_enable"
+                android:title="Enable"
+                android:summary="Enable Flash Firmware button, make sure to read and understand the help section first."
+                android:defaultValue="false" />
+
+            <Preference android:title="Flash firmware V4 ( legacy )"
+                android:summary="When selected, meBarista will reflash your espresso machine. Read help section first."
+                android:dependency="pref_support_fw_enable"
+                android:enabled="false">
+
+                <intent android:targetPackage="nl.digitalthings.mebarista"
+                    android:targetClass="nl.digitalthings.mebarista.MainActivity"
+                    android:data="flashfirmware_V4"
+                    android:dependency="pref_support_fw_enable"
+                    />
+            </Preference>
+
+            <Preference android:title="Flash firmware V9 ( newest )"
+                android:summary="When selected, meBarista will reflash your espresso machine. Read help section first."
+                android:dependency="pref_support_fw_enable"
+                android:enabled="false">
+
+                <intent android:targetPackage="nl.digitalthings.mebarista"
+                    android:targetClass="nl.digitalthings.mebarista.MainActivity"
+                    android:data="flashfirmware_V9"
+                    android:dependency="pref_support_fw_enable"
+                    />
+            </Preference>
+
+            <Preference android:title="Flash firmware V10 ( newest )"
+                android:summary="When selected, meBarista will reflash your espresso machine. Read help section first."
+                android:dependency="pref_support_fw_enable"
+                android:enabled="true">
+
+                <intent android:targetPackage="nl.digitalthings.mebarista"
+                    android:targetClass="nl.digitalthings.mebarista.MainActivity"
+                    android:data="flashfirmware_V10"
+                    android:dependency="pref_support_fw_enable"
+                    />
+            </Preference>
+
+            <ListPreference
+                android:key="pref_fw_timing"
+                android:title="Flash timing"
+                android:dependency="pref_support_fw_enable"
+                android:defaultValue="250"
+                android:entries="@array/fw_timing"
+                android:entryValues="@array/fw_timing_alias"/>
+
+            <Preference android:title="Help" >
+
+                <intent
+                    android:action="android.intent.action.VIEW"
+                    android:data="https://www.mecoffee.nl/mebarista/help/hardware/firmware/"
+                    />
+
+            </Preference>
+
+        </PreferenceScreen>
+
+        <Preference android:title="Help" >
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.mecoffee.nl/mebarista/help/hardware/"
+                />
+
+        </Preference>
+
+    </PreferenceScreen>
+
+    <PreferenceScreen
+        android:title="Support"
+        android:key="pref_support">
+
+
+        <nl.digitalthings.mebarista.EditTextPreferenceWithSummary
+            android:id="@+id/pref_support_email"
+            android:key="pref_support_email"
+            android:defaultValue="support@yourdealer.com"
+            android:title="Helpdesk email address"
+            android:summary="Support tickets are sent to '%s' by default"
+            />
+
+        <Preference android:title="Support ticket" >
+
+            <intent android:targetPackage="nl.digitalthings.mebarista"
+                android:targetClass="nl.digitalthings.mebarista.MainActivity"
+                android:data="supportticket" />
+
+        </Preference>
+
+        <Preference android:title="Credits and Licenses" >
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://www.mecoffee.nl/mebarista/credits/"
+                />
+
+        </Preference>
+
+        <Preference android:title="Help" >
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://www.mecoffee.nl/mebarista/help/support/"
+                />
+
+        </Preference>
+
+    </PreferenceScreen>
+
+</PreferenceScreen>

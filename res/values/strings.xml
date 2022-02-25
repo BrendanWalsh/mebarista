@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">meBarista</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="terminalMessage">#&gt;HelloUser</string>
+    <string name="TerminalInitMessage">Type what to send</string>
+    <string name="SendButtonText">Send</string>
+    <string name="about">About</string>
+    <string name="messageUnknownButton">Unknown button was pressed</string>
+    <string name="seachingDev">Searching for bluetooth devices</string>
+    <string name="UnsupportedBluetooth">This device doesn\'t support bluetooth, exiting!</string>
+    <string name="notSwithcedOnBluetooth">Without bluetooth this program is useless</string>
+    <string name="defaultSpinnerMessage">Seaching paired bluetooth devices</string>
+    <string name="noPairedDevices">No paired devices, searching new devices</string>
+    <string name="findedPairedDevices">Paired devices finded</string>
+    <string name="noCurrentDevice">You are not connected to device </string>
+    <string name="searchFailed">Failed to start search devices, exiting</string>
+    <string name="findedDevices">Finded devices, look at list</string>
+    <string name="SocketRead">Data readed from socket</string>
+    <string name="ButtonOk">OK</string>
+    <string name="ButtonRe">Re</string>
+    <string name="OnDestroy">Destroyed</string>
+    <string name="OnStop">Stopped</string>
+
+</resources>

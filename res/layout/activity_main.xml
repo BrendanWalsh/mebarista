@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Root: only reason to use relative is background -->
+<RelativeLayout
+	android:id="@+id/root2"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+    android:background="#000000"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:atswidget="http://schemas.android.com/apk/res-auto"
+     >
+
+    <!-- Picture background -->
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/coffee"
+        android:background="#00000000"
+        android:scaleType="centerCrop" />
+
+    <!-- Camera background -->
+    <SurfaceView
+        android:id="@+id/video"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="invisible" />
+
+    <!-- Main content: for now: graph -->
+    <RelativeLayout
+        android:id="@+id/achart"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:visibility="visible"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        />
+
+    <!-- Installation manual
+    <WebView  xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/installation_manual"
+        android:visibility="invisible"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        />
+    -->
+
+    <TextView
+        android:id="@+id/logging"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:visibility="visible"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        />
+
+    <!-- Overlay over background ( the actual controls ) -->
+    <RelativeLayout 
+        android:id="@+id/root"
+    	android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:padding="16dp"
+	    >
+
+        <!-- Top bar -->
+        <RelativeLayout
+            android:id="@+id/topbar"
+    		android:layout_width="fill_parent"
+			android:layout_height="wrap_content" 
+			android:layout_alignParentTop="true" >
+                    
+	        <!--  Indicator / ON/OFF -->
+	        <ImageView
+				android:id="@+id/Indicator"
+		        android:layout_width="64dp"
+		        android:layout_height="64dp"
+		        android:layout_alignParentTop="true"
+			    android:layout_alignParentRight="true"	        
+		        android:src="@drawable/silvia_off"
+		        android:scaleType="centerInside" />
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:visibility="gone" >
+            </ProgressBar>
+	        		
+        </RelativeLayout>
+
+		<!--  Bottom bar -->
+		<RelativeLayout
+            android:id="@+id/bottombar"
+    		android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true" >
+
+            <RelativeLayout
+                android:id="@+id/gauges"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true" >
+
+            <nl.digitalthings.mebarista.Gauge
+                android:id="@+id/power"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="20dp"
+                atswidget:totalNotches="50"
+                atswidget:incrementPerLargeNotch="20"
+                atswidget:incrementPerSmallNotch="4"
+                atswidget:scaleCenterValue="0"
+                atswidget:scaleColor="0x9f004d0f"
+                atswidget:scaleMinValue="0"
+                atswidget:scaleMaxValue="100"
+                atswidget:rangeOkColor="0x9f00ff00"
+                atswidget:rangeOkMinValue="0"
+                atswidget:rangeOkMaxValue="10"
+                atswidget:rangeWarningColor="0x9fff8800"
+                atswidget:rangeWarningMinValue="10"
+                atswidget:rangeWarningMaxValue="25"
+                atswidget:rangeErrorColor="0x9fff0000"
+                atswidget:rangeErrorMinValue="25"
+                atswidget:rangeErrorMaxValue="100"
+                atswidget:unitTitle="Boiler %"
+            atswidget:lowerTitle=""
+            atswidget:upperTitle=""
+            atswidget:showGauge="false"
+            atswidget:showHand="true"
+            atswidget:showRange="true"
+            />
+
+                <nl.digitalthings.mebarista.Gauge
+                    android:id="@+id/shottimer"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@id/power"
+
+                    android:visibility="gone"
+                    atswidget:totalNotches="45"
+                    atswidget:incrementPerLargeNotch="5"
+                    atswidget:incrementPerSmallNotch="1"
+                    atswidget:scaleCenterValue="0"
+                    atswidget:scaleColor="0x9f004d0f"
+                    atswidget:scaleMinValue="0"
+                    atswidget:scaleMaxValue="45"
+                    atswidget:angleMinValue="0"
+                    atswidget:angleMaxValue="270"
+                    atswidget:rangeOkColor="0x9fff8800"
+                    atswidget:rangeOkMinValue="0"
+                    atswidget:rangeOkMaxValue="20"
+                    atswidget:rangeWarningColor="0x9f00ff00"
+                    atswidget:rangeWarningMinValue="20"
+                    atswidget:rangeWarningMaxValue="25"
+                    atswidget:rangeErrorColor="0x9fff0000"
+                    atswidget:rangeErrorMinValue="25"
+                    atswidget:rangeErrorMaxValue="45"
+                    atswidget:unitTitle="Shot time"
+                    atswidget:lowerTitle=""
+                    atswidget:upperTitle=""
+                    atswidget:showGauge="false"
+                    atswidget:showHand="true"
+                    atswidget:showRange="true"
+                    />
+
+            </RelativeLayout>
+
+            <!-- Temperature control -->
+		    <LinearLayout
+		        android:id="@+id/tempcontrol"
+		        android:orientation="vertical"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentBottom="true"
+				android:layout_alignParentRight="true" >
+				
+		        <TextView
+					android:id="@+id/BTemp"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:text="---,-- °"
+					android:textSize="24sp"
+					android:textStyle="bold"
+					android:textColor="#FFFFFF"					 
+					android:gravity="center" 
+				    />
+		    
+		    	<RelativeLayout
+		        	android:id="@+id/tempcontrolctrls"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" >
+				
+			   		<Button
+						android:id="@+id/MinButton"
+						android:layout_width="52dp"
+						android:layout_height="52dp"
+						android:text="-"
+						android:textSize="28sp"
+						android:textStyle="bold"
+						android:textColor="#FFFFFF"
+						android:background="#B0993300"
+						 />
+					
+			        <TextView 
+						android:id="@+id/SetPoint"
+						android:layout_width="70dp"
+						android:layout_height="wrap_content"
+						android:text="---,-- °"
+						android:textSize="14sp"
+						android:textColor="#FFFFFF"
+						android:editable="false"
+						android:gravity="center" 
+			            android:layout_gravity="center"
+						android:layout_toRightOf="@id/MinButton"
+						android:layout_centerVertical="true"
+						android:layout_marginLeft="0dp"
+						/>
+			        
+			        <Button
+						android:id="@+id/PlusButton"
+						android:layout_width="52dp"
+						android:layout_height="52dp"
+						android:text="+"
+						android:textSize="28sp"
+						android:textStyle="bold"
+						android:textColor="#FFFFFF"
+						android:background="#B0993300"
+						android:layout_toRightOf="@id/SetPoint"
+						 />
+			        
+				</RelativeLayout>        		
+
+            </LinearLayout>
+
+		</RelativeLayout>
+
+
+
+    </RelativeLayout>
+		    
+</RelativeLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2012 Jay Weisskopf
+
+Licensed under the MIT License (see LICENSE.txt)
+-->
+<resources>
+
+    <declare-styleable name="SliderPreference">
+
+        <attr name="android:summary" />
+        <attr name="android:max" />
+        <attr name="minn" format="float" />
+        <attr name="resolution" format="float" />
+        <attr name="scales" format="float" />
+        <attr name="decimals" format="float" />
+        <attr name="format" format="string" />
+
+    </declare-styleable>
+
+</resources>

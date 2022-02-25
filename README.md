@@ -1,3 +1,6 @@
+# NOTICE: Forked from the original MeBarista app at https://mecoffee.nl/mebarista/.
+# Updated to work with gradle 6.8
+
 First public meBarista for Android repo : https://mecoffee.nl/mebarista/
 
 Build:
